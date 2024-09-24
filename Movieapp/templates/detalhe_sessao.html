@@ -1,0 +1,15 @@
+<h1>{{ sessao.filme.titulo }} - Sessão às {{ sessao.horario }}</h1>
+
+<h2>Assentos Disponíveis</h2>
+<ul>
+    {% for assento in assentos %}
+        {% if assento.disponivel %}
+            <li>
+                Assento {{ assento.numero }} - 
+                <a href="{% url 'reservar_assento' assento.id %}">Reservar</a>
+            </li>
+        {% else %}
+            <li>Assento {{ assento.numero }} - Ocupado</li>
+        {% endif %}
+    {% endfor %}
+</ul>
